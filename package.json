@@ -1,0 +1,25 @@
+{
+  "name": "js-library-zhougaox",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "showdown": "^1.9.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://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@github.com/csc309-fall-2021/js-library-zhougaox.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/csc309-fall-2021/js-library-zhougaox/issues"
+  },
+  "homepage": "https://github.com/csc309-fall-2021/js-library-zhougaox#readme"
+}

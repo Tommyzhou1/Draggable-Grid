@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/example.css">
+</head>
+<script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script defer src="https://unpkg.com/showdown/dist/showdown.min.js"></script>
+<script defer src="../grid.js"></script>
+<script defer src="../js/examples.js"></script>
+
+<body>
+    <!-- Google Style Button Credit to : https://getcssscan.com/css-buttons-examples*/ -->
+    <a href="/">
+        <button class="button-17" role="button">Home</button> 
+    </a>
+    <a href="documentation.html">
+        <button class="button-17" role="button">Documentation</button>
+    </a>
+    <div class = "page">
+        <div class="description">
+            Try gets the kiwi and avatar sign closer in zoom view! Now supported with multi-dimension.
+        </div>    
+        <div class = "pos"> 
+            <div class="posContainer">
+                <div id = "pos1"></div>
+                <div id = "pos2"></div>
+                <div id = "pos3"></div>
+            </div>
+        </div>
+        <div class = "code">
+            <button class="button-17" role="button" onclick="code1()">Toggle to View Code</button> 
+            <div id = "code1"></div>
+        </div>
+
+        <hr/>
+        <div class="description">
+            Try resizing the kiwi grid by dragging the tag on the bottom-right of the grid
+        </div>    
+        <div class = "pos"> 
+            <div class="posContainer">
+                <div id = "pos4"></div>
+            </div>
+            <div id = "resize_range">
+            <div id = "resize_prompt">
+                Please input your desired range of resizing grid ratio
+                <br/>
+                Default is (0.5 - 2.0)
+                Suggested min ratio range (0.5 - 0.9)
+                Suggested max ratio range (2.0 - 4.0)
+            </div>
+            <input type="text" id="min" value="enter min resize ratio" name="min_ratio">
+            ---
+            <input type="text" id="max" value="enter max resize ratio"  name="max_ratio">
+            <input type="submit" value="Submit" onclick="sumbitResizingRange()">
+            </div>
+        </div>
+        <div class = "code">
+            <button class="button-17" role="button" onclick="code2()">Toggle to View Code</button> 
+            <div id = "code2"></div>
+        </div>
+
+        <hr/>
+        <div class="description">
+            Try organize the game icons and dragging the tag to resize grid
+        </div>    
+        <div class = "pos"> 
+            <div class="posContainer">
+                <div id = "pos5"></div>
+            </div>
+        </div>
+        <div class = "code">
+            <button class="button-17" role="button" onclick="code3()">Toggle to View Code</button> 
+            <div id = "code3"></div>
+        </div>
+
+        <hr/>
+        <div class="description">
+            Try duplicate / delete the course by dragging away and drop in the green/red zone
+        </div>  
+        <button class="button-17" role="button" onclick="enableDD()">Toggle to enable/disable the duplicate/delete feature</button> 
+        <div class = "pos"> 
+            <div class="posContainer">
+                <div id = "pos6"></div>
+            </div>
+            <div id = "prompt">
+                Drag grid to here to see if you can see the zones
+                <br/>
+                after enabling the functionality by clicking button
+                <div id = "prompt_zone"> Try dragging grid towards Here</div>
+                <br/>
+                <br/>
+                Drop to the desired zone (Red/Green) after you can
+                see the zones
+            </div>
+           
+        </div>
+        <div class = "code">
+            <button class="button-17" role="button" onclick="code4()">Toggle to View Code</button> 
+            <div id = "code4"></div>
+        </div>
+        <hr/>
+
+        <div class="description">
+            Try swap/reorder grid across the following two grid sets
+        </div>  
+        <button class="button-17" role="button" onclick="enableSwap()">Toggle to enable/disable the cross-grid swapping feature</button> 
+        <div class = "pos"> 
+            <div class="posContainer">
+                <div id = "pos7"></div>
+                <div id = "pos8"></div>
+            </div>
+        </div>
+        <div class = "code">
+            <button class="button-17" role="button" onclick="code5()">Toggle to View Code</button> 
+            <div id = "code5"></div>
+        </div>
+        <hr/>
+
+        <div id= "whitespace"></div>
+        
+    </div>
+</body>
+</html>

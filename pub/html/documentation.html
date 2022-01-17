@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/documentation.css">
+</head>
+<script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script defer src="https://unpkg.com/showdown/dist/showdown.min.js"></script>
+<script defer src="../grid.js"></script>
+
+<body>
+    <!-- Google Style Button Credit to : https://getcssscan.com/css-buttons-examples*/ -->
+    <a href="/">
+        <button class="button-17" role="button">Home</button> 
+    </a>
+    <a href="examples.html">
+        <button class="button-17" role="button">Examples</button>
+    </a>
+    <div id = "content-wrapper">
+        <div id = "content">
+            <h1 id="draggable-and-sortable-grid-view-documentation">Draggable and Sortable Grid View Documentation</h1>
+            <h3 id="-a-fast-deployed-and-minimal-js-library-for-creating-draggable-and-sortable-grid-views">- A fast-deployed and minimal JS library for creating draggable and sortable grid views</h3>
+            <h2 id="getting-started">Getting Started</h2>
+            <p>This is an example of how you set up the project in your local machine.</p>
+            <h3 id="prerequisites">Prerequisites</h3>
+            <ul>
+            <li>Chrome/Firefox Browser <ul>
+            <li>HTML5 Draggable Events not natively supported in Safari</li>
+            </ul>
+            </li>
+            <li><p>JQuery</p>
+            <p>Put compressed JQuery JS in html <code>&lt;script defer&gt;</code> tag</p>
+            <pre><code class="lang-sh"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">defer</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+            </code></pre>
+            </li>
+            </ul>
+            <h3 id="installation">Installation</h3>
+            <p>Below is an instruction of how to set up and use the project to construct your own draggable and sortable grid view.</p>
+            <ol>
+            <li>Clone the repo</li>
+            <li>Put grid.js file into the root menu of your project.</li>
+            <li>No extra CSS needed (It is a light weighted JS library)</li>
+            </ol>
+            <!-- 2. Clone the repo
+               ```sh
+               git clone https://github.com/your_username_/Project-Name.git
+               ```
+            1. Install NPM packages
+               ```sh
+               npm install
+               ```
+            2. Enter your API in `config.js`
+               ```js
+               const API_KEY = 'ENTER YOUR API';
+               ``` -->
+            <!-- USAGE EXAMPLES -->
+            <h2 id="usage">Usage</h2>
+            <p>Some Code Examples and Snippets of The Project</p>
+            <h3 id="initalize-the-sortablegridgenerator-object-and-call-makegrid-api">Initalize the SortableGridGenerator object And Call makeGrid API</h3>
+            <pre><code class="lang-js">  sg = <span class="hljs-keyword">new</span> <span class="hljs-type">SortableGridGenerator</span>();
+              sg.makeGrids(<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-string">"70px"</span>,<span class="hljs-string">"10px"</span>, <span class="hljs-string">"white"</span>,<span class="hljs-string">"pos1"</span>,<span class="hljs-string">"grid1"</span>); <span class="hljs-comment">//sameple grid view</span>
+            </code></pre>
+            <h3 id="sample-api-calls-setgridbackground-etc-">Sample API Calls (setGridBackground etc.)</h3>
+            <pre><code class="lang-js">    <span class="hljs-selector-tag">sg</span><span class="hljs-selector-class">.setSwappingForSeparateGrids</span>(false); <span class="hljs-comment">//disable the swapping between grid views</span>
+                <span class="hljs-selector-tag">sg</span><span class="hljs-selector-class">.setDropCloneZone</span>(false); <span class="hljs-comment">//disable the drop/clone functionality</span>
+                <span class="hljs-selector-tag">sg</span><span class="hljs-selector-class">.setResizeBoundForGrid</span>(<span class="hljs-number">0.5</span>,<span class="hljs-number">2.0</span>); <span class="hljs-comment">//set the resize bound for grid</span>
+                <span class="hljs-selector-tag">sg</span><span class="hljs-selector-class">.setGridBackground</span>(<span class="hljs-string">"grid_1"</span>,<span class="hljs-string">"url('img/kiwi.png')"</span>); <span class="hljs-comment">//set the background for grid</span>
+            </code></pre>
+            <h3 id="basic-swapping-helper-function">Basic Swapping Helper Function</h3>
+            <pre><code class="lang-js">    let temp_grid_1 = $(<span class="hljs-string">"&lt;div/&gt;"</span>)<span class="hljs-comment">;//two temp div to hold the position</span>
+                let temp_grid_2 = $(<span class="hljs-string">"&lt;div/&gt;"</span>)<span class="hljs-comment">;</span>
+            
+                temp_grid_1.<span class="hljs-keyword">insertBefore(grid_1);//insert </span>the temp <span class="hljs-keyword">divs </span><span class="hljs-keyword">before </span>the <span class="hljs-keyword">original </span>positions
+                temp_grid_2.<span class="hljs-keyword">insertBefore(grid_2);
+            </span>    grid_1.<span class="hljs-keyword">insertAfter(temp_grid_2);//switch </span>the grid postions <span class="hljs-keyword">by </span><span class="hljs-keyword">insert </span>the grids interchangeably
+                grid_2.<span class="hljs-keyword">insertAfter(temp_grid_1);
+            </span>
+                temp_grid_1.remove()<span class="hljs-comment">;//remove the temp grids to finalize the swap</span>
+                temp_grid_2.remove()<span class="hljs-comment">;</span>
+            </code></pre>
+            <h3 id="get-the-order-of-selected-grid-view">Get the Order of Selected Grid View</h3>
+            <pre><code class="lang-js">    <span class="hljs-keyword">let</span> totalGridOrder = []; <span class="hljs-comment">//Set the container of grid order list</span>
+                <span class="hljs-keyword">let</span> x<span class="hljs-number">_</span>start = <span class="hljs-number">0</span>;
+                <span class="hljs-keyword">let</span> dim<span class="hljs-number">_</span>x = <span class="hljs-keyword">this</span>.total<span class="hljs-number">_</span>girds<span class="hljs-number">_</span>dim[grid<span class="hljs-number">_n</span>ame][<span class="hljs-number">0</span>]; <span class="hljs-comment">//get the grid dimension</span>
+                <span class="hljs-keyword">let</span> dim<span class="hljs-number">_</span>y = <span class="hljs-keyword">this</span>.total<span class="hljs-number">_</span>girds<span class="hljs-number">_</span>dim[grid<span class="hljs-number">_n</span>ame][<span class="hljs-number">1</span>];
+                <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; dim<span class="hljs-number">_</span>y; i++){
+                    <span class="hljs-keyword">let</span> rowGridOrder = [];
+                    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j = x<span class="hljs-number">_</span>start; j &lt; x<span class="hljs-number">_</span>start+dim<span class="hljs-number">_</span>x; j++){
+                        rowGridOrder.push(<span class="hljs-keyword">this</span>.grids<span class="hljs-number">_</span>id[j]);<span class="hljs-comment">//push the grid id into container row</span>
+                    } 
+                    x<span class="hljs-number">_</span>start+=dim<span class="hljs-number">_</span>x;
+                    totalGridOrder.push(rowGridOrder); <span class="hljs-comment">//push the grid id into container column</span>
+                }
+                <span class="hljs-keyword">return</span> totalGridOrder;
+            </code></pre>
+            <h2 id="api">API</h2>
+            <h3 id="makegrids">makeGrids</h3>
+            <p>create and initialize the grid view with customizable style at the given position</p>
+            <ul>
+            <li>Parameters<ul>
+            <li><code>grid_size_x</code> (horizontal dimension of grid view) <code>[Numerical Value]</code></li>
+            <li><code>grid_size_y</code> (vertical dimension of grid view) <code>[Numerical Value]</code></li>
+            <li><code>grid_size</code> (size of each grid) <code>[Pixel Value]</code></li>
+            <li><code>grid_margin</code> (margin of each grid) <code>[Pixel Value]</code></li>
+            <li><code>grid_background_color</code> (background color of each grid) <code>[CSS Color Code]</code></li>
+            <li><code>target_div_id</code> (the div you want to place the grid view) <code>[div id]</code></li>
+            <li><code>grid_name</code> (the name you want to call the grid view) <code>[String]</code></li>
+            </ul>
+            </li>
+            <li>Return value<ul>
+            <li>NULL</li>
+            </ul>
+            </li>
+            <li>The function will generate a draggable and sortable grid view based on user&#39;s preference and can be located based on user&#39;s input.</li>
+            </ul>
+            <hr/>
+            <h3 id="setgridbackground">setGridBackground</h3>
+            <p>set the background to a user-specified grid in the grid view</p>
+            <ul>
+            <li>Parameters<ul>
+            <li><code>grid_id</code> (the id of grid div in the dom) <code>[grid div id]</code></li>
+            <li><code>img_src</code> (the path of given source image) <code>[url(&#39;the path of the source image&#39;)]</code></li>
+            </ul>
+            </li>
+            <li>Return value<ul>
+            <li>NULL</li>
+            </ul>
+            </li>
+            <li>The function will set the background of user-specified grid based on user&#39;s input image</li>
+            </ul>
+            <hr/>
+            <h3 id="setswappingforseparategrids">setSwappingForSeparateGrids</h3>
+            <p>enable/disable swapping and reordering between two different grid views</p>
+            <ul>
+            <li>Parameters<ul>
+            <li><code>if_set</code> (the flag) <code>[boolean value]</code></li>
+            </ul>
+            </li>
+            <li>Return value<ul>
+            <li>NULL</li>
+            </ul>
+            </li>
+            <li>The function will set the <code>setSwappingForSepGrids</code> flag to apply restrictions for two different grid views to conduct swapping/reordering actions.</li>
+            </ul>
+            <hr/>
+            <h3 id="getswappingforseparategrids">getSwappingForSeparateGrids</h3>
+            <p>get the status of swapping and reordering functionality (if enabled)between two different grid views</p>
+            <ul>
+            <li>Parameters<ul>
+            <li>NULL</li>
+            </ul>
+            </li>
+            <li><p>Return value</p>
+            <ul>
+            <li><code>setSwappingForSepGrids</code> (the flag) <code>[boolean value]</code></li>
+            </ul>
+            </li>
+            <li><p>The function will get the <code>setSwappingForSepGrids</code> flag status for applying restrictions for two different grid views to conduct swapping/reordering actions.</p>
+            </li>
+            </ul>
+            <hr/>
+            <h3 id="setresizeboundforgrid">setResizeBoundForGrid</h3>
+            <p>set the lowest and highest resizing ratio for the entire grid view</p>
+            <ul>
+            <li>Parameters<ul>
+            <li><code>min_rat</code> (the minimal resizing ratio) <code>[decimal value]</code></li>
+            <li><code>max_rat</code> (the maximal resizing ratio) <code>[decimal value]</code></li>
+            </ul>
+            </li>
+            <li>Return value<ul>
+            <li>NULL</li>
+            </ul>
+            </li>
+            <li>The function will set the resizing range of each grid in the entire grid view when performing resizing actions.</li>
+            </ul>
+            <hr/>
+            <h3 id="getresizeboundforgrid">getResizeBoundForGrid</h3>
+            <p>get the lowest and highest resizing ratio for the entire grid view</p>
+            <ul>
+            <li>Parameters<ul>
+            <li>NULL</li>
+            </ul>
+            </li>
+            <li>Return value<ul>
+            <li><code>[min_ratio,max_ratio]</code> (the minimal and maximal resizing ratio) <code>[two-element list]</code></li>
+            </ul>
+            </li>
+            <li>The function will get the current resizing ratio for the grid, it will be supplied in a two-element list format with minimal ratio in the first position and maximal ratio in the second position respectively.</li>
+            </ul>
+            <hr/>
+            <h3 id="setdropclonezone">setDropCloneZone</h3>
+            <p>enable/disable the drop and clone zone for the grid to delete and duplicate respectively</p>
+            <ul>
+            <li>Parameters<ul>
+            <li><code>if_set</code> (the flag) <code>[boolean value]</code></li>
+            </ul>
+            </li>
+            <li>Return value<ul>
+            <li>NULL</li>
+            </ul>
+            </li>
+            <li>The function will set the <code>setDropCLoneZoneForGrids</code> flag to apply functionality with deleting and cloning grid element in a dynamic way.</li>
+            </ul>
+            <hr/>
+            <h3 id="getdropclonezone">getDropCloneZone</h3>
+            <p>get the status of the drop and clone zone functionality (if enabled).</p>
+            <ul>
+            <li>Parameters<ul>
+            <li>NULL</li>
+            </ul>
+            </li>
+            <li>Return value<ul>
+            <li><code>setDropCLoneZoneForGrids</code> (the flag) <code>[boolean value]</code></li>
+            </ul>
+            </li>
+            <li>The function will get the <code>setSwappingForSepGrids</code> flag to apply restrictions for two different grid views to conduct swapping/reordering actions.</li>
+            <li>Sample Usage Diagram of Drop/Clone Zone</li>
+            </ul>
+            <hr/>
+            <h3 id="getcurrentgridorder">getCurrentGridOrder</h3>
+            <p>get the internal order of user-specified grid view </p>
+            <ul>
+            <li>Parameters<ul>
+            <li><code>grid_name</code> (the name user called the grid view in <code>makeGrid</code>) <code>[String]</code></li>
+            </ul>
+            </li>
+            <li>Return value<ul>
+            <li>The grid order (the internal grid order of selected grid view based on grid_id) <code>[in a 2D nested list]</code></li>
+            </ul>
+            </li>
+            <li>The function will get the grid order of user-specified grid view in a 2D nested list.</li>
+            </ul>
+            <hr/>
+            
+        </div>
+    </div>
+
+</body>
+</html>
